@@ -110,8 +110,8 @@ check(not bad, 'app/ is offline (no external URLs, fetch, XHR)', '; '.join(bad[:
 readme = (ROOT / 'README.md').read_text()
 needles = [
     'https://make.fun/badge/gta6-cover-art-01.svg',
-    'https://make.fun/badge/rank/wwwmrleee-cloud/gta6-cover-art.svg',
-    'https://make.fun/badge/reward/wwwmrleee-cloud/gta6-cover-art.svg',
+    'https://make.fun/badge/gta6-cover-art-01/wwwmrleee-cloud/gta6-cover-art/rank.svg',
+    'https://make.fun/badge/gta6-cover-art-01/wwwmrleee-cloud/gta6-cover-art/reward.svg',
 ]
 check(all(n in readme for n in needles), 'README.md has all three make.fun badges with wwwmrleee-cloud/gta6-cover-art',
       f"missing: {[n for n in needles if n not in readme]}")
