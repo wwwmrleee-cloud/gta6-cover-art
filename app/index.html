@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover editor controls">
+    <header>
+      <h1>Vice Cover Studio</h1>
+      <p class="tagline">Your photo + a caption, turned into multi-panel poster cover art. Free, and 100% offline.</p>
+    </header>
+
+    <section class="step" aria-label="Step 1: add a photo">
+      <h2><span class="step-num">1</span> Add a photo</h2>
+      <p class="hint">Upload up to 4 photos, or try a sample — nothing is uploaded anywhere.</p>
+      <div class="slots">
+        <div class="photo-slot" data-slot="0" tabindex="0" role="button" aria-label="Photo slot 1">
+          <span class="thumb">+</span><span class="slot-name">Photo 1 — empty</span>
+          <label class="upload">Choose file <input type="file" accept="image/*" data-slot="0" aria-label="Upload photo 1"></label>
+        </div>
+        <div class="photo-slot" data-slot="1" tabindex="0" role="button" aria-label="Photo slot 2">
+          <span class="thumb">+</span><span class="slot-name">Photo 2 — empty</span>
+          <label class="upload">Choose file <input type="file" accept="image/*" data-slot="1" aria-label="Upload photo 2"></label>
+        </div>
+        <div class="photo-slot" data-slot="2" tabindex="0" role="button" aria-label="Photo slot 3">
+          <span class="thumb">+</span><span class="slot-name">Photo 3 — empty</span>
+          <label class="upload">Choose file <input type="file" accept="image/*" data-slot="2" aria-label="Upload photo 3"></label>
+        </div>
+        <div class="photo-slot" data-slot="3" tabindex="0" role="button" aria-label="Photo slot 4">
+          <span class="thumb">+</span><span class="slot-name">Photo 4 — empty</span>
+          <label class="upload">Choose file <input type="file" accept="image/*" data-slot="3" aria-label="Upload photo 4"></label>
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" data-sample="boulevard">Try a sample: Boulevard</button>
+        <button type="button" data-sample="pier">Try a sample: Pier</button>
+      </div>
+      <p class="hint">Tip: drop a photo file straight onto the preview, or click a panel to select it.</p>
+    </section>
+
+    <section class="step" aria-label="Step 2: pick layout and grade">
+      <h2><span class="step-num">2</span> Pick layout &amp; grade</h2>
+      <div class="swatches" role="group" aria-label="Layout">
+        <button type="button" data-layout="trio" class="active">Sunset Trio</button>
+        <button type="button" data-layout="grid">Neon Grid</button>
+        <button type="button" data-layout="strip">Boulevard Strip</button>
+      </div>
+      <div class="swatches" role="group" aria-label="Colour grade">
+        <button type="button" data-grade="sunset" class="active"><span class="chip chip-sunset"></span>Sunset</button>
+        <button type="button" data-grade="neon"><span class="chip chip-neon"></span>Neon Night</button>
+        <button type="button" data-grade="gold"><span class="chip chip-gold"></span>Gold Hour</button>
+        <button type="button" data-grade="palm"><span class="chip chip-palm"></span>Palm Coast</button>
+      </div>
+      <label class="field">Caption
+        <input id="caption" type="text" maxlength="40" value="NEON SHORE" aria-label="Caption">
+      </label>
+      <label class="field">Script accent word
+        <input id="subtitle" type="text" maxlength="30" value="welcome to" aria-label="Script accent word">
+      </label>
+      <p id="panel-label" class="hint">Selected: Hero (panel 1 of 3)</p>
+      <div class="row">
+        <button type="button" id="use-photo">Use this photo for the selected panel</button>
+        <button type="button" id="fill-all">Fill all panels with this photo</button>
+      </div>
+      <label class="field">Zoom the selected panel photo
+        <span class="zoom-row">
+          <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1" aria-label="Zoom the selected panel photo">
+          <span id="zoom-value">1.0×</span>
+        </span>
+      </label>
+      <p class="hint">Drag the photo inside its panel on the preview to move it.</p>
+      <button type="button" id="reset-position">Reset position &amp; zoom</button>
+    </section>
+
+    <section class="step" aria-label="Step 3: export">
+      <h2><span class="step-num">3</span> Export</h2>
+      <p class="hint">Preview size:</p>
+      <div class="swatches" role="group" aria-label="Preview size">
+        <button type="button" data-size="1080x1080" class="active">Square 1080 × 1080</button>
+        <button type="button" data-size="1080x1350">Portrait 1080 × 1350</button>
+        <button type="button" data-size="1920x1080">Wide 1920 × 1080</button>
+      </div>
+      <div class="exports">
+        <button type="button" id="export-1080x1080" data-export="1080x1080">Export PNG 1080 × 1080</button>
+        <button type="button" id="export-1080x1350" data-export="1080x1350">Export PNG 1080 × 1350</button>
+        <button type="button" id="export-1920x1080" data-export="1920x1080">Export PNG 1920 × 1080</button>
+      </div>
+      <p id="status" role="status">Ready — add a photo to begin.</p>
+      <p class="offline">Photos never leave this machine — 100% offline. No uploads, no accounts, no watermark.</p>
+    </section>
+  </section>
+
+  <section class="preview" aria-label="Cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="Live preview of your cover"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
